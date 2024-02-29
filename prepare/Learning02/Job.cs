@@ -11,7 +11,6 @@ public class Job
     // constructor
     public Job()
     {
-
     }
 
     // Method declared

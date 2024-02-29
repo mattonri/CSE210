@@ -9,15 +9,19 @@ public class Resume
 
     public Resume()
     {
-
     }
 
-    public void InitializeJob()
+    public void AddJob(string _company= "", string _jobTitle= "", int _startYear= 0,
+    int _endYear= 0)
     {
         Job defaultJobName = new Job();
+        defaultJobName._company = _company;
+        defaultJobName._jobTitle = _jobTitle;
+        defaultJobName._startYear = _startYear;
+        defaultJobName._endYear = _endYear;
         _jobs.Add(defaultJobName);
     }
-    
+
     public void DisplayResume()
     {
         Console.WriteLine($"Name: {_name}");
