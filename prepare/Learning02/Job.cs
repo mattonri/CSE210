@@ -8,6 +8,7 @@ public class Job
     public int _startYear;
     public int _endYear;
 
+
     // constructor
     public Job()
     {
