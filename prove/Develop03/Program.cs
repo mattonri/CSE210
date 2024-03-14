@@ -20,9 +20,14 @@ class Program
             if (mrtselectedScripture.mrtHideWord())
             {
                 userInput = "quit";
+                Console.Clear();
                 Console.WriteLine("Congrats! That's all the words. Now see if you can do it fully from memory:\n");
                 Console.WriteLine(mrtselectedScripture.mrtReturnString());
                 Console.ReadLine();
+            }
+            else
+            {
+                Console.Clear();
             }
         }
 
