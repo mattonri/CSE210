@@ -42,12 +42,13 @@ class Program
             }
             else if(mrtentry == "5")
             {
-                mrtpoints+=mrtRecordEvent();
+                int _pointsGained = mrtRecordEvent();
+                Console.WriteLine($"You just gained {_pointsGained} points!");
+                mrtpoints+=_pointsGained;
             }
             else if(mrtentry != "6")
             {
             Console.WriteLine("Sorry, that isn't a valid entry. Please try again!");
-
             }
         }
     }

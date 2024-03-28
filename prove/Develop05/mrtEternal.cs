@@ -16,7 +16,7 @@ public class mrtEternal : mrtGoal
     public override string mrtToString()
     {
 
-        string _constructedString = $"[ ] {_name} ({_description})";
+        string _constructedString = $"[*] {_name} ({_description})";
         return _constructedString;
     }
     public override int mrtRecordEvent()
