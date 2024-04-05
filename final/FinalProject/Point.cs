@@ -56,7 +56,7 @@ public class Point
             }
             else
             {
-                decimal _distance = (decimal)Math.Sqrt(Math.Pow((double)_xCoord-(double)p_endPoint.GetXY().Item1, 2) + Math.Pow((double)_yCoord-(double)p_endPoint.GetXY().Item1, 2));
+                decimal _distance = (decimal)Math.Sqrt(Math.Pow((double)(_xCoord - p_endPoint.GetXY().Item1), 2) + Math.Pow((double)(_yCoord - p_endPoint.GetXY().Item2), 2));
                 return _distance;
             }
         }
@@ -64,5 +64,9 @@ public class Point
         {
             throw new ArgumentNullException("Cannot calculate distance to/from null point", e);
         }
+    }
+    public string ReturnString()
+    {
+        return $"({_xCoord}, {_yCoord})";
     }
 }

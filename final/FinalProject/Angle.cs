@@ -39,4 +39,12 @@ public class Angle
     {
         return $"Angle: {_angle} at Point: {_point}\nBetween lines: {_segment1} and {_segment2}";
     }
+    public Segment ReturnSegment1()
+    {
+        return _segment1;
+    }
+    public Segment ReturnSegment2()
+    {
+        return _segment2;
+    }
 }

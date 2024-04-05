@@ -5,12 +5,12 @@ using System.Diagnostics.CodeAnalysis;
 public class Segment
 {
     private decimal? _length = null;
-    private Point _starting_point;
-    private Point _ending_point;
+    private Point _startingPoint;
+    private Point _endingPoint;
 
     public Segment(Point p_starting, decimal p_length, Point p_ending=null, decimal p_tolerance=0)
     {
-        _starting_point = p_starting;
+        _startingPoint = p_starting;
         _length = p_length;
         if (p_ending != null)
         {
@@ -24,7 +24,7 @@ public class Segment
                 }
                 else
                 {
-                    _ending_point = p_ending;
+                    _endingPoint = p_ending;
                 }
             }
             catch (ImpossibleShapeException e)
@@ -35,8 +35,8 @@ public class Segment
     }
     public Segment(Point p_starting, Point p_ending)
     {
-        _starting_point = p_starting;
-        _ending_point = p_ending;
+        _startingPoint = p_starting;
+        _endingPoint = p_ending;
         _length = p_starting.DistanceFrom(p_ending);
     }
     public decimal ReturnLength()
@@ -45,19 +45,19 @@ public class Segment
     }
     public Point ReturnStartingPoint()
     {
-        return _starting_point;
+        return _startingPoint;
     }
     public Point ReturnEndingPoint()
     {
-        return _ending_point;
+        return _endingPoint;
     }
     public void SetEndPoint(Point p_endPoint)
     {
         try
         {
-            if(_ending_point == null)
+            if(_endingPoint == null)
             {
-                _ending_point = p_endPoint;
+                _endingPoint = p_endPoint;
             }
             else
             {
@@ -69,6 +69,33 @@ public class Segment
             throw new CannotOverwriteException("Overwrite the existing endpoint of a line segment", e);
         }
 
+    }
+    public Point PartialTransitionAlong(decimal p_ratio)
+    {
+        try
+        {
+            decimal? _startingPointX = _startingPoint.GetXY().Item1;
+            decimal? _startingPointY = _startingPoint.GetXY().Item2;
+            decimal? _endingPointX = _endingPoint.GetXY().Item1;
+            decimal? _endingPointY = _endingPoint.GetXY().Item2;
+
+            if(_endingPointX != null || _endingPointY != null || _startingPointX != null || _startingPointY != null)
+            {
+                decimal _segmentDeltaX = (-(decimal)_startingPointX + (decimal)_endingPointX) * p_ratio;
+                decimal _segmentDeltaY = (-(decimal)_startingPointY + (decimal)_endingPointY) * p_ratio;
+                
+                Point _returnPoint = _startingPoint.Transition(_segmentDeltaX, _segmentDeltaY);
+                return _returnPoint;
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
+        }
+        catch (ArgumentNullException e)
+        {
+            throw new ArgumentNullException("Cannot Perform a partial transition along a segment with null points", e);
+        }
     }
 
 }
