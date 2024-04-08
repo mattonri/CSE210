@@ -7,7 +7,7 @@ public class GeometryCalculator
     }
     public (Point, Point) CalculateThirdPoints(decimal mrtTolerance, Point mrtPoint1, Point mrtPoint2, decimal mrtDistance1, decimal mrtDistance2)
     {
-
+    // There are a lot of different calculations that need to be done. If you want an explanation, look up '2d trilateration'.
     // 1
     Segment mrtSegment1_T = new Segment(p_starting: mrtPoint1,p_length:mrtDistance1);
     decimal d1 = mrtSegment1_T.ReturnLength();
