@@ -8,6 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        // You can change this value to ask the user to set a tolerance to 
         bool mrtAskTolerance = false;
         Console.WriteLine("Welcome to The Point Calculator!");
         GeometryCalculator mrtMainCalculations = new GeometryCalculator();
